@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Controls from './Controls';
-import Counter from './Counter';
-import Publication from './Publication';
+import Controls from '../Controls';
+import Counter from '../Counter';
+import Publication from '../Publication';
 
 import publications from './publications.json'
-import css from './App.module.css';
-
+import css from './style.module.css';
 
 class App extends React.Component {
   constructor() {
@@ -25,7 +24,7 @@ class App extends React.Component {
 
   prevPage() {
     if (this.state.currentIndex === 0) return;
-    this.setState(prevState => ({currentIndex: prevState.currentIndex -= 1}))
+    this.setState(prevState => ({ currentIndex: prevState.currentIndex -= 1 }))
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './style.module.css';
+import PropTypes from 'prop-types';
 
 const Controls = ({onPrevPage, onNextPage}) => {
 
@@ -22,6 +23,11 @@ const Controls = ({onPrevPage, onNextPage}) => {
       </button>
     </section>
   )  
+}
+
+Controls.propTypes = {
+  onPrevPage: PropTypes.func,
+  onNextPage: PropTypes.func,
 }
 
 export default Controls;
