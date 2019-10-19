@@ -1,11 +1,14 @@
 .controls {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   margin-bottom: 16px;
+  margin: 20px auto;
 }
 
 .button {
-  display: inline-block;
+  display: block;
   min-width: 240px;
   border: 0;
   padding: 8px 16px;
@@ -23,14 +26,14 @@
   text-decoration: none;
   color: #fff;
   cursor: pointer;
-}
-
-.button[disabled] {
-  pointer-events: none;
-  background-color: #bdbdbd;
-}
-
-.button:hover,
-.button:focus {
-  background-color: #1f65d6;
+  
+  &[disabled] {
+    pointer-events: none;
+    background-color: #bdbdbd;
+  }
+  
+  &:hover,
+  &:focus {
+    background-color: #1f65d6;
+  }
 }

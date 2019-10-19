@@ -17,13 +17,32 @@ class App extends React.Component {
     this.prevPage = this.prevPage.bind(this);
   }
 
+  componentDidMount() {
+    const savedIndex = +localStorage.getItem('currentPageIndex');
+    if (savedIndex) this.setState({ currentIndex: savedIndex });
+    this.checkCurrentIndex();
+  }
+
+  componentDidUpdate(prevState) {
+    if(prevState.currentIndex === this.state.currentIndex) return;
+    localStorage.setItem('currentPageIndex', this.state.currentIndex);
+    this.checkCurrentIndex();
+  }
+
+  checkCurrentIndex() {
+    const { currentIndex } = this.state,
+      prevBtn = document.querySelector('[name="previous-btn"]'),
+      nextBtn = document.querySelector('[name="next-btn"]');
+    
+    currentIndex === (publications.length - 1) ? nextBtn.disabled = true : nextBtn.disabled = false;
+    currentIndex === 0 ? prevBtn.disabled = true : prevBtn.disabled = false;
+  }
+
   nextPage() {
-    if (this.state.currentIndex === (publications.length - 1)) return;
     this.setState(prevState => ({ currentIndex: prevState.currentIndex += 1 }));
   }
 
   prevPage() {
-    if (this.state.currentIndex === 0) return;
     this.setState(prevState => ({ currentIndex: prevState.currentIndex -= 1 }))
   }
 

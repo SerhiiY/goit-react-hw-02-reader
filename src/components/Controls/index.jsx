@@ -1,13 +1,14 @@
 import React from 'react';
-import css from './style.module.css';
+import css from './style.module.scss';
 import PropTypes from 'prop-types';
 
 const Controls = ({onPrevPage, onNextPage}) => {
 
   return (
-    <section className={css.Controls}>
+    <section className={css.controls}>
       <button
         type="button"
+        name="previous-btn"
         className={css.button}
         onClick={onPrevPage}
       >
@@ -16,6 +17,7 @@ const Controls = ({onPrevPage, onNextPage}) => {
 
       <button
         type="button"
+        name="next-btn"
         className={css.button}
         onClick={onNextPage}
       >
