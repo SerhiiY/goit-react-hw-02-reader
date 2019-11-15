@@ -10,31 +10,25 @@ export default class Reader extends React.Component {
   
   state = {
     currentIndex: 0,
-    isFirstPage: true,
-    isLastPage: false,
   }
 
-  lastPageIndex = this.props.items.length - 1;
-
-  changePage = ({ target }) => {
-    if (target.name === "next") {
-      const isLastPage = this.state.currentIndex + 1 === this.lastPageIndex ? true : false;
-      this.setState(({ currentIndex }) => ({ currentIndex: currentIndex + 1,  isFirstPage: false, isLastPage: isLastPage }) )
-    } else {
-      const isFirstPage = this.state.currentIndex - 1 === 0 ? true : false;
-      this.setState(({ currentIndex }) => ({ currentIndex: currentIndex - 1, isFirstPage: isFirstPage, isLastPage: false }) )
-    }
+  handleClick = ({ target: { name } }) => {
+    this.setState(({ currentIndex }) => name === "next" ? {currentIndex: currentIndex + 1} : {currentIndex: currentIndex - 1});
   }
 
   render() {
-    const { currentIndex, isFirstPage, isLastPage } = this.state,
+    const { currentIndex } = this.state,
       { items } = this.props;
 
     return (
       <div className={css.Reader}>
-        <Controls changePage={this.changePage} isFirstPage={isFirstPage} isLastPage={isLastPage}/>
+        <Controls
+          handleClick={this.handleClick}
+          currentPage={currentIndex}
+          lastPage={items.length}
+        />
         <Counter
-          currentPage={currentIndex + 1}
+          currentPage={currentIndex}
           lastPage={items.length}
         />
         <Publication

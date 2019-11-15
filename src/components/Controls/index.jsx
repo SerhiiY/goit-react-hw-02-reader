@@ -3,13 +3,13 @@ import css from './style.module.scss';
 import PropTypes from 'prop-types';
 
 
-const Controls = ({ changePage, isFirstPage, isLastPage }) => (
+const Controls = ({ handleClick, currentPage, lastPage }) => (
   <section className={css.controls}>
-    <button type="button" name="previous" className={css.button} onClick={changePage} disabled={isFirstPage}>
+    <button type="button" name="previous" className={css.button} onClick={handleClick} disabled={currentPage === 0}>
       Назад
       </button>
 
-    <button type="button" name="next" className={css.button} onClick={changePage} disabled={isLastPage}>
+    <button type="button" name="next" className={css.button} onClick={handleClick} disabled={currentPage === lastPage - 1}>
       Вперед
       </button>
   </section>
@@ -17,13 +17,6 @@ const Controls = ({ changePage, isFirstPage, isLastPage }) => (
 
 Controls.propTypes = {
   changePage: PropTypes.func,
-  siFirstPage: PropTypes.bool,
-  isLastPage: PropTypes.bool,
-}
-
-Controls.defaultProps = {
-  currentIndex: 1,
-  itemsNumber: 1, 
 }
 
 export default Controls;
