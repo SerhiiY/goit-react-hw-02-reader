@@ -17,6 +17,13 @@ const Controls = ({ handleClick, currentPage, lastPage }) => (
 
 Controls.propTypes = {
   changePage: PropTypes.func,
+  currentPage: PropTypes.number,
+  lastPage: PropTypes.number,
+}
+
+Controls.defaultProps = {
+  currentPage: 0,
+  lastPage: 1,
 }
 
 export default Controls;
